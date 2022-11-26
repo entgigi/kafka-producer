@@ -36,7 +36,7 @@ func main() {
 	kafkaWriter := &kafka.Writer{
 		Addr:     kafka.TCP(config.KafkaAddress),
 		Topic:    config.Topic,
-		Balancer: &kafka.LeastBytes{},
+		Balancer: &kafka.RoundRobin{},
 	}
 
 	mux := http.NewServeMux()
